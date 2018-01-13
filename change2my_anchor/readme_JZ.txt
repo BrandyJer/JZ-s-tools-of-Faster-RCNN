@@ -45,4 +45,27 @@ ValueError: operands could not be broadcast together with shapes (3800,1) (5700,
 ======================================================================================================
 修改proposal_layer.py
 anchor_scales = layer_params.get('scales', (11, 17))
+==================================================================================================================
+2018-1-10
+修改pascal_voc.py中
+# PASCAL specific config options
+        self.config = {'cleanup'     : True,
+                       'use_salt'    : True,
+                       'use_diff'    : False,
+                       'matlab_eval' : False,
+                       'rpn_file'    : None,
+                       'min_size'    : 2}
+为(保存结果文件)
+# PASCAL specific config options
+        self.config = {'cleanup'     : False,
+                       'use_salt'    : True,
+                       'use_diff'    : False,
+                       'matlab_eval' : False,
+                       'rpn_file'    : None,
+                       'min_size'    : 2}
+=====================================================================================================
+将上一项中的修改恢复default:cleanup:False
+注释pascal_voc.py 328line
+因此不删除template的detecte结果txt文件。
+=====================================================================================================
 
